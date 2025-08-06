@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"testing"
+
+	"github.com/jrchyang/golab/utils"
 )
 
 func countLines(f *os.File, counts map[string]int, fileMap map[string]string) {
@@ -16,14 +18,10 @@ func countLines(f *os.File, counts map[string]int, fileMap map[string]string) {
 }
 
 func Test_dup2(t *testing.T) {
-	if len(os.Args) < 6 {
-		fmt.Printf("only have %d args for this test, just return", len(os.Args))
-		return
-	}
-
+	args := utils.ParseTestProgramArgs()
 	counts := make(map[string]int)
 	fileMap := make(map[string]string)
-	files := os.Args[5:]
+	files := args[1:]
 
 	if len(files) == 0 {
 		countLines(os.Stdin, counts, fileMap)
