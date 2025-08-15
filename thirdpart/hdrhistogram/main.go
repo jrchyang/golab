@@ -1,13 +1,12 @@
-package bench
+package main
 
 import (
 	"fmt"
-	"testing"
 
 	hdrhistogram "github.com/HdrHistogram/hdrhistogram-go"
 )
 
-func TestHDR(t *testing.T) {
+func main() {
 	hdr := hdrhistogram.New(1, 30000000, 4)
 	input := []int64{
 		1, 2, 3, 4, 5, 6, 7, 8,
