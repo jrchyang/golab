@@ -7,6 +7,8 @@ import (
 	"io"
 	"math"
 	"math/rand"
+	"os"
+	"time"
 )
 
 var palette = []color.Color{color.White, color.Black}
@@ -41,4 +43,9 @@ func Lissajous(out io.Writer) {
 		anim.Image = append(anim.Image, img)
 	}
 	gif.EncodeAll(out, &anim)
+}
+
+func main() {
+	rand.Seed(time.Now().UTC().UnixNano())
+	Lissajous(os.Stdout)
 }
